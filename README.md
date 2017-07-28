@@ -1,4 +1,4 @@
-# Training repository of LAMMPS Workshop 2017
+# LAMMPS GitHub Tutorial (LAMMPS Workshop 2017)
 
 If you are looking for the official LAMMPS repo, please go
 to https://github.com/lammps/lammps
