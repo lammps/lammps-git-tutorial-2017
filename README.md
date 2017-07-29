@@ -1,5 +1,8 @@
 # LAMMPS GitHub Tutorial (LAMMPS Workshop 2017)
 
+This repository will be used to training new developers and package
+maintainers.
+
 If you are looking for the official LAMMPS repo, please go
 to https://github.com/lammps/lammps
 
