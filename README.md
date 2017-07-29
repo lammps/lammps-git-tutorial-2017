@@ -6,6 +6,7 @@ maintainers.
 If you are looking for the official LAMMPS repo, please go
 to https://github.com/lammps/lammps
 
+
 ---
 
 This is the LAMMPS software package.
