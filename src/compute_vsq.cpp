@@ -27,7 +27,7 @@ using namespace LAMMPS_NS;
 ComputeVSQ::ComputeVSQ(LAMMPS *lmp, int narg, char **arg) :
   Compute(lmp, narg, arg)
 {
-  if (narg != 3) error->all(FLERR,"Illegal compute ke command");
+  if (narg != 3) error->all(FLERR,"Illegal compute vsq command");
 
   scalar_flag = 1;
   extscalar = 1;
@@ -37,7 +37,7 @@ ComputeVSQ::ComputeVSQ(LAMMPS *lmp, int narg, char **arg) :
 
 void ComputeVSQ::init()
 {
-  pfactor = 0.5 * force->mvv2e;
+  
 }
 
 /* ---------------------------------------------------------------------- */
@@ -53,20 +53,14 @@ double ComputeVSQ::compute_scalar()
   int *type = atom->type;
   int nlocal = atom->nlocal;
 
-  double ke = 0.0;
+  double vsq = 0.0;
 
-  if (rmass) {
-    for (int i = 0; i < nlocal; i++)
-      if (mask[i] & groupbit)
-        ke += rmass[i] * (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
-  } else {
-    for (int i = 0; i < nlocal; i++)
-      if (mask[i] & groupbit)
-        ke += mass[type[i]] *
-          (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
-  }
-
-  MPI_Allreduce(&ke,&scalar,1,MPI_DOUBLE,MPI_SUM,world);
-  scalar *= pfactor;
+  
+  for (int i = 0; i < nlocal; i++)
+    if (mask[i] & groupbit)
+      vsq += 
+        (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
+  
+  MPI_Allreduce(&vsq,&scalar,1,MPI_DOUBLE,MPI_SUM,world);
   return scalar;
 }
