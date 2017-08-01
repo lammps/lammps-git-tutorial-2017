@@ -37,7 +37,6 @@ ComputeVSQltwsmith::ComputeVSQltwsmith(LAMMPS *lmp, int narg, char **arg) :
 
 void ComputeVSQltwsmith::init()
 {
-  pfactor = 0.5 * force->mvv2e;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -61,6 +60,5 @@ double ComputeVSQltwsmith::compute_scalar()
 
 
   MPI_Allreduce(&vsq,&scalar,1,MPI_DOUBLE,MPI_SUM,world);
-  scalar *= pfactor;
   return scalar;
 }
