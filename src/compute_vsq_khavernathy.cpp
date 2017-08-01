@@ -24,7 +24,7 @@ using namespace LAMMPS_NS;
 
 /* ---------------------------------------------------------------------- */
 
-ComputeVSQ::ComputeVSQ(LAMMPS *lmp, int narg, char **arg) :
+ComputeVSQ_khavernathy::ComputeVSQ_khavernathy(LAMMPS *lmp, int narg, char **arg) :
   Compute(lmp, narg, arg)
 {
   if (narg != 3) error->all(FLERR,"Illegal compute ke command");
@@ -35,14 +35,14 @@ ComputeVSQ::ComputeVSQ(LAMMPS *lmp, int narg, char **arg) :
 
 /* ---------------------------------------------------------------------- */
 
-void ComputeVSQ::init()
+void ComputeVSQ_khavernathy::init()
 {
   pfactor = 0.5 * force->mvv2e;
 }
 
 /* ---------------------------------------------------------------------- */
 
-double ComputeVSQ::compute_scalar()
+double ComputeVSQ_khavernathy::compute_scalar()
 {
   invoked_scalar = update->ntimestep;
 

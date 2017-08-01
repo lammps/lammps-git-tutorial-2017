@@ -13,7 +13,7 @@
 
 #ifdef COMPUTE_CLASS
 
-ComputeStyle(vsq,ComputeVSQ)
+ComputeStyle(vsq,ComputeVSQ_khavernathy)
 
 #else
 
@@ -24,9 +24,9 @@ ComputeStyle(vsq,ComputeVSQ)
 
 namespace LAMMPS_NS {
 
-class ComputeVSQ : public Compute {
+class ComputeVSQ_khavernathy : public Compute {
  public:
-  ComputeVSQ(class LAMMPS *, int, char **);
+  ComputeVSQ_khavernathy(class LAMMPS *, int, char **);
   void init();
   double compute_scalar();
 
