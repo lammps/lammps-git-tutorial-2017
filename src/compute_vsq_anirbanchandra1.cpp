@@ -37,7 +37,7 @@ ComputeVSQ::ComputeVSQ(LAMMPS *lmp, int narg, char **arg) :
 
 void ComputeVSQ::init()
 {
-  pfactor = 0.5 * force->mvv2e;
+  
 }
 
 /* ---------------------------------------------------------------------- */
@@ -55,18 +55,11 @@ double ComputeVSQ::compute_scalar()
 
   double vsq = 0.0;
 
-  if (rmass) {
+
     for (int i = 0; i < nlocal; i++)
       if (mask[i] & groupbit)
-        vsq += rmass[i] * (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
-  } else {
-    for (int i = 0; i < nlocal; i++)
-      if (mask[i] & groupbit)
-        vsq += mass[type[i]] *
-          (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
-  }
+        vsq += (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
 
   MPI_Allreduce(&vsq,&scalar,1,MPI_DOUBLE,MPI_SUM,world);
-  scalar *= pfactor;
   return scalar;
 }
