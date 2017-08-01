@@ -13,12 +13,12 @@
 
 #ifdef COMPUTE_CLASS
 
-ComputeStyle(vsq,ComputeVSQ_khavernathy)
+ComputeStyle(vsq/khavernathy,ComputeVSQ_khavernathy)
 
 #else
 
-#ifndef LMP_COMPUTE_VSQ_H
-#define LMP_COMPUTE_VSQ_H
+#ifndef LMP_COMPUTE_VSQ_KHAVERNATHY_H
+#define LMP_COMPUTE_VSQ_KHAVERNATHY_H
 
 #include "compute.h"
 
